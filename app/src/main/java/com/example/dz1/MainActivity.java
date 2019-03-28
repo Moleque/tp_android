@@ -1,5 +1,6 @@
 package com.example.dz1;
 
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -10,37 +11,38 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
+
+    private ListFragment listFragment;
+    private NumFragment numberFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ListFragment list = new ListFragment();
+        listFragment = new ListFragment();
+        numberFragment = new NumFragment();
+
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.add(R.id.frame, list);
-        transaction.commit();
-
-//        for (int i = 0; i < 100; i++) {
-//            addNewNumber(i);
-//        }
-    }
-
-    public void addNewNumber(int num) {
-        LinearLayout numbers = findViewById(R.id.num_layout);
-
-        Button button = new Button(MainActivity.this);
-        numbers.addView(button);
-    }
-
-    public void Open(View v) {
-        Fragment fragment = new NumFragment();
-
-        FragmentManager manager = getSupportFragmentManager();
-        FragmentTransaction transaction = manager.beginTransaction();
-        transaction.replace(R.id.frame, fragment);
-        transaction.addToBackStack(null);
+        transaction.add(R.id.frame, listFragment);
         transaction.commit();
     }
+
+//    public void onNumClick(View v) {
+//        openNumber(number);
+//    }
+//
+//    public void openNumber(View v) {
+//        Fragment fragment = new NumFragment();
+//
+//        FragmentManager manager = getSupportFragmentManager();
+//        FragmentTransaction transaction = manager.beginTransaction();
+//        transaction.replace(R.id.frame, fragment);
+//        transaction.addToBackStack(null);
+//        transaction.commit();
+//    }
 }

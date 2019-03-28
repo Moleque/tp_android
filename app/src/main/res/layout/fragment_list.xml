@@ -16,11 +16,19 @@
             android:text="@string/add_button"
             tools:ignore="MissingConstraints" />
 
-        <LinearLayout
-            android:id="@+id/num_layout"
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-        </LinearLayout>
+            android:layout_height="match_parent">
+        </android.support.v7.widget.RecyclerView>
+
+        <!--<LinearLayout-->
+            <!--android:id="@+id/num_layout"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:orientation="horizontal">-->
+            <!---->
+            <!---->
+        <!--</LinearLayout>-->
     </LinearLayout>
 </FrameLayout>
