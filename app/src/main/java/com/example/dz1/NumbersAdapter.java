@@ -1,6 +1,7 @@
 package com.example.dz1;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,12 +11,10 @@ import android.widget.Button;
 
 public class NumbersAdapter extends RecyclerView.Adapter<NumbersAdapter.NumberViewHolder> {
 
-//    private static int numbersCreated;
     private int numbersCount;
 
     public NumbersAdapter(int numbersCount) {
         this.numbersCount = numbersCount;
-//        numbersCreated = 0;
     }
 
     @Override
@@ -41,7 +40,6 @@ public class NumbersAdapter extends RecyclerView.Adapter<NumbersAdapter.NumberVi
     class NumberViewHolder extends RecyclerView.ViewHolder {
 
         private Button numberItem;
-        private int number;
 
         public NumberViewHolder(View itemView) {
             super(itemView);
@@ -49,8 +47,13 @@ public class NumbersAdapter extends RecyclerView.Adapter<NumbersAdapter.NumberVi
         }
 
         void bind(int number) {
-            this.number = number;
             numberItem.setText(String.valueOf(number));
+            numberItem.setTextColor(getNumColor(number));
+        }
+
+        private int getNumColor(int num) {
+            int color = (num % 2 == 0) ? Color.RED : Color.BLUE;
+            return color;
         }
     }
 }
