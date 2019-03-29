@@ -22,8 +22,7 @@ public class NumbersAdapter extends RecyclerView.Adapter<NumbersAdapter.NumberVi
         LayoutInflater inflater = LayoutInflater.from(viewGroup.getContext());
         View view = inflater.inflate(R.layout.number, viewGroup, false);
 
-        NumberViewHolder viewHolder = new NumberViewHolder(view);
-        return viewHolder;
+        return new NumberViewHolder(view);
     }
 
     @Override
@@ -34,6 +33,10 @@ public class NumbersAdapter extends RecyclerView.Adapter<NumbersAdapter.NumberVi
     @Override
     public int getItemCount() {
         return numbersCount;
+    }
+
+    public void setItemCount(int numbersCount) {
+        this.numbersCount = numbersCount;
     }
 
 
@@ -52,7 +55,7 @@ public class NumbersAdapter extends RecyclerView.Adapter<NumbersAdapter.NumberVi
         }
 
         private int getNumColor(int num) {
-            int color = (num % 2 == 0) ? Color.RED : Color.BLUE;
+            int color = num % 2 == 0 ? Color.RED : Color.BLUE;
             return color;
         }
     }
