@@ -1,8 +1,10 @@
 package com.example.dz1;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,8 +39,8 @@ public class NumbersAdapter extends RecyclerView.Adapter<NumbersAdapter.NumberVi
 
     public void setItemCount(int numbersCount) {
         this.numbersCount = numbersCount;
+        notifyDataSetChanged();
     }
-
 
     class NumberViewHolder extends RecyclerView.ViewHolder {
 
@@ -47,6 +49,16 @@ public class NumbersAdapter extends RecyclerView.Adapter<NumbersAdapter.NumberVi
         public NumberViewHolder(View itemView) {
             super(itemView);
             numberItem = itemView.findViewById(R.id.item_number);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+//                    FragmentTransaction transaction = v.getFragmentManager();
+//                    transaction.replace(R.id.frame, listFragment)
+//                            .addToBackStack(null)
+//                            .commit();
+                }
+            });
         }
 
         void bind(int number) {

@@ -13,20 +13,20 @@ import android.widget.LinearLayout;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Callable;
 
 public class MainActivity extends AppCompatActivity {
 
     private ListFragment listFragment;
-    private NumFragment numberFragment;
+//    private NumFragment numberFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_main);
 
         listFragment = new ListFragment();
-        numberFragment = new NumFragment();
+//        numberFragment = new NumFragment();
 
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.add(R.id.frame, listFragment);
@@ -37,13 +37,17 @@ public class MainActivity extends AppCompatActivity {
 //        openNumber(number);
 //    }
 //
-//    public void openNumber(View v) {
-//        Fragment fragment = new NumFragment();
-//
-//        FragmentManager manager = getSupportFragmentManager();
-//        FragmentTransaction transaction = manager.beginTransaction();
-//        transaction.replace(R.id.frame, fragment);
-//        transaction.addToBackStack(null);
-//        transaction.commit();
+//    private void openListFragment(View v) {
+//        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+//        transaction.replace(R.id.frame, listFragment)
+//                .addToBackStack(null)
+//                .commit();
 //    }
+//
+    private void openNumFragment() {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.frame, listFragment)
+                .addToBackStack(null)
+                .commit();
+    }
 }

@@ -23,14 +23,19 @@ public class ListFragment extends Fragment {
     private int numbersCount = 25;
 
     @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_list, container, false);
     }
 
     @Override
-    public void onViewCreated(View view, Bundle savaInstanceState) {
-        if (savaInstanceState != null) {
-            numbersCount = savaInstanceState.getInt("numbersCount");
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        if (savedInstanceState != null) {
+            numbersCount = savedInstanceState.getInt("numbersCount", numbersCount);
         }
 
         Context context = view.getContext();
@@ -48,8 +53,7 @@ public class ListFragment extends Fragment {
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int numbersCount = adapter.getItemCount();
-                adapter.setItemCount(numbersCount + 1);
+                adapter.setItemCount(adapter.getItemCount() + 1);
             }
         });
     }
