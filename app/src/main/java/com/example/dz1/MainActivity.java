@@ -18,32 +18,42 @@ import java.util.concurrent.Callable;
 public class MainActivity extends AppCompatActivity {
 
     private ListFragment listFragment;
-//    private NumFragment numberFragment;
+    private NumFragment numberFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        listFragment = new ListFragment();
+//        listFragment = new ListFragment();
 //        numberFragment = new NumFragment();
 
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.add(R.id.frame, listFragment);
-        transaction.commit();
+        listFragment = (ListFragment)getSupportFragmentManager().findFragmentByTag(ListFragment.TAG);
+        if (listFragment == null) {
+            listFragment = new ListFragment();
+        }
+
+        numberFragment = (NumFragment)getSupportFragmentManager().findFragmentByTag(NumFragment.TAG);
+        if (numberFragment == null) {
+            numberFragment = new NumFragment();
+        }
+
+        openListFragment();
     }
 
 //    public void onNumClick(View v) {
 //        openNumber(number);
 //    }
 //
-//    private void openListFragment(View v) {
-//        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-//        transaction.replace(R.id.frame, listFragment)
-//                .addToBackStack(null)
-//                .commit();
-//    }
-//
+    private void openListFragment() {
+        if(getSupportFragmentManager().findFragmentByTag(NumFragment.TAG) == null) {
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.frame, listFragment)
+                    .addToBackStack(null)
+                    .commit();
+        }
+    }
+
     private void openNumFragment() {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.frame, listFragment)

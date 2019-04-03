@@ -5,6 +5,7 @@ import android.content.res.Configuration;
 import android.media.VolumeShaper;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -16,6 +17,8 @@ import android.widget.Button;
 
 
 public class ListFragment extends Fragment {
+
+    public static final String TAG = "ListFragment";
 
     private Button addButton;
     private RecyclerView recycler;
@@ -59,7 +62,7 @@ public class ListFragment extends Fragment {
     }
 
     @Override
-    public void onSaveInstanceState(Bundle outState) {
+    public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putInt("numbersCount", numbersCount);
     }
