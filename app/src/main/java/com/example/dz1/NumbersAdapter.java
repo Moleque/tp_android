@@ -1,10 +1,7 @@
 package com.example.dz1;
 
-import android.content.Context;
-import android.content.Intent;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,13 +20,12 @@ public class NumbersAdapter extends RecyclerView.Adapter<NumbersAdapter.NumberVi
     public NumberViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         LayoutInflater inflater = LayoutInflater.from(viewGroup.getContext());
         View view = inflater.inflate(R.layout.number, viewGroup, false);
-
         return new NumberViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull NumberViewHolder numberViewHolder, int i) {
-        numberViewHolder.bind(i);
+        numberViewHolder.bind(i+1);
     }
 
     @Override
@@ -53,10 +49,7 @@ public class NumbersAdapter extends RecyclerView.Adapter<NumbersAdapter.NumberVi
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-//                    FragmentTransaction transaction = v.getFragmentManager();
-//                    transaction.replace(R.id.frame, listFragment)
-//                            .addToBackStack(null)
-//                            .commit();
+
                 }
             });
         }

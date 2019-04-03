@@ -2,14 +2,10 @@ package com.example.dz1;
 
 import android.content.Context;
 import android.content.res.Configuration;
-import android.media.VolumeShaper;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,11 +20,6 @@ public class ListFragment extends Fragment {
     private RecyclerView recycler;
     private NumbersAdapter adapter;
     private int numbersCount = 25;
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
