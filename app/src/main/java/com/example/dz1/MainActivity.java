@@ -23,7 +23,6 @@ public class MainActivity extends AppCompatActivity implements Listener {
             numberFragment = new NumFragment();
         }
         openListFragment();
-//        openNumFragment(10, getColor(R.color.colorAccent));
     }
 
     private void openListFragment() {
