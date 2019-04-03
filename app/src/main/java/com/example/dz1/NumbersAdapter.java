@@ -11,16 +11,18 @@ import android.widget.Button;
 public class NumbersAdapter extends RecyclerView.Adapter<NumbersAdapter.NumberViewHolder> {
 
     private int numbersCount;
+    private Listener listener;
 
-    public NumbersAdapter(int numbersCount) {
+    public NumbersAdapter(int numbersCount, Listener listener) {
         this.numbersCount = numbersCount;
+        this.listener = listener;
     }
 
     @Override
     public NumberViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         LayoutInflater inflater = LayoutInflater.from(viewGroup.getContext());
         View view = inflater.inflate(R.layout.number, viewGroup, false);
-        return new NumberViewHolder(view);
+        return new NumberViewHolder(view, listener);
     }
 
     @Override
@@ -38,23 +40,26 @@ public class NumbersAdapter extends RecyclerView.Adapter<NumbersAdapter.NumberVi
         notifyDataSetChanged();
     }
 
+
     class NumberViewHolder extends RecyclerView.ViewHolder {
 
+        private int number;
         private Button numberItem;
 
-        public NumberViewHolder(View itemView) {
+        public NumberViewHolder(View itemView, final Listener listener) {
             super(itemView);
 
             numberItem = itemView.findViewById(R.id.item_number);
-            itemView.setOnClickListener(new View.OnClickListener() {
+            numberItem.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    listener.openNumFragment(number, getNumColor(number));
                 }
             });
         }
 
         void bind(int number) {
+            this.number = number;
             numberItem.setText(String.valueOf(number));
             numberItem.setTextColor(getNumColor(number));
         }

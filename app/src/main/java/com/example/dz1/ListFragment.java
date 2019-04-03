@@ -1,5 +1,6 @@
 package com.example.dz1;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -21,9 +22,17 @@ public class ListFragment extends Fragment {
     private NumbersAdapter adapter;
     private int numbersCount = 100;
 
+    private Listener listener;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_list, container, false);
+    }
+
+    @Override
+    public void onAttach(Activity activity) {
+        listener = (Listener) activity;
+        super.onAttach(activity);
     }
 
     @Override
@@ -40,7 +49,7 @@ public class ListFragment extends Fragment {
         recycler = (RecyclerView)view.findViewById(R.id.recycler);
         recycler.setLayoutManager(new GridLayoutManager(context, columnsCount));
 
-        adapter = new NumbersAdapter(numbersCount);
+        adapter = new NumbersAdapter(numbersCount, listener);
         recycler.setAdapter(adapter);
 
         addButton = (Button)view.findViewById(R.id.add_button);

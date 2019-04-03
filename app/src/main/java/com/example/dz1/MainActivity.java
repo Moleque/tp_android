@@ -4,7 +4,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements Listener {
 
     private ListFragment listFragment;
     private NumFragment numberFragment;
@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void openNumFragment(int number, int color) {
+    public void openNumFragment(int number, int color) {
         numberFragment.setNumberValue(number, color);
         if(getSupportFragmentManager().findFragmentByTag(NumFragment.TAG) == null) {
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
