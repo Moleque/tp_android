@@ -19,7 +19,7 @@ public class ListFragment extends Fragment {
     private Button addButton;
     private RecyclerView recycler;
     private NumbersAdapter adapter;
-    private int numbersCount = 25;
+    private int numbersCount = 100;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
