@@ -4,7 +4,6 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-
 public class MainActivity extends AppCompatActivity {
 
     private ListFragment listFragment;
@@ -24,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
             numberFragment = new NumFragment();
         }
         openListFragment();
+//        openNumFragment(10, getColor(R.color.colorAccent));
     }
 
     private void openListFragment() {
@@ -35,7 +35,8 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void openNumFragment() {
+    private void openNumFragment(int number, int color) {
+        numberFragment.setNumberValue(number, color);
         if(getSupportFragmentManager().findFragmentByTag(NumFragment.TAG) == null) {
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
             transaction.replace(R.id.frame, numberFragment, NumFragment.TAG)

@@ -40,7 +40,7 @@ public class NumFragment extends Fragment {
         numView.setTextColor(color);
     }
 
-    public void setViewValues(int number, int color) {
+    public void setNumberValue(int number, int color) {
         Bundle bundle = new Bundle();
         bundle.putInt("number", number);
         bundle.putInt("color", color);

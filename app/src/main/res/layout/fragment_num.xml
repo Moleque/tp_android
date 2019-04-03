@@ -10,7 +10,7 @@
         android:id="@+id/number_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Hi"
+        android:text="@string/number"
         android:textSize="70sp"
         android:gravity="center"/>
 

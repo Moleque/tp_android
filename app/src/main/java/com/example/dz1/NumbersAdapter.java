@@ -44,8 +44,8 @@ public class NumbersAdapter extends RecyclerView.Adapter<NumbersAdapter.NumberVi
 
         public NumberViewHolder(View itemView) {
             super(itemView);
-            numberItem = itemView.findViewById(R.id.item_number);
 
+            numberItem = itemView.findViewById(R.id.item_number);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
