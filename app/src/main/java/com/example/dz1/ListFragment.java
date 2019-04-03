@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -17,8 +18,7 @@ import android.widget.Button;
 
 
 public class ListFragment extends Fragment {
-
-    public static final String TAG = "ListFragment";
+    public static final String TAG = "List";
 
     private Button addButton;
     private RecyclerView recycler;
@@ -56,7 +56,8 @@ public class ListFragment extends Fragment {
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                adapter.setItemCount(adapter.getItemCount() + 1);
+                numbersCount = adapter.getItemCount() + 1;
+                adapter.setItemCount(numbersCount);
             }
         });
     }

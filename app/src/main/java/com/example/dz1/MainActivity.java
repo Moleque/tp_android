@@ -25,39 +25,34 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        listFragment = new ListFragment();
-//        numberFragment = new NumFragment();
-
         listFragment = (ListFragment)getSupportFragmentManager().findFragmentByTag(ListFragment.TAG);
         if (listFragment == null) {
             listFragment = new ListFragment();
         }
 
-        numberFragment = (NumFragment)getSupportFragmentManager().findFragmentByTag(NumFragment.TAG);
-        if (numberFragment == null) {
-            numberFragment = new NumFragment();
-        }
+//        numberFragment = (NumFragment)getSupportFragmentManager().findFragmentByTag(NumFragment.TAG);
+//        if (numberFragment == null) {
+//            numberFragment = new NumFragment();
+//        }
 
         openListFragment();
     }
 
-//    public void onNumClick(View v) {
-//        openNumber(number);
-//    }
-//
     private void openListFragment() {
-        if(getSupportFragmentManager().findFragmentByTag(NumFragment.TAG) == null) {
+        if(getSupportFragmentManager().findFragmentByTag(ListFragment.TAG) == null) {
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            transaction.replace(R.id.frame, listFragment)
-                    .addToBackStack(null)
+            transaction.replace(R.id.frame, listFragment, ListFragment.TAG)
+                    .addToBackStack(ListFragment.TAG)
                     .commit();
         }
     }
 
-    private void openNumFragment() {
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.frame, listFragment)
-                .addToBackStack(null)
-                .commit();
-    }
+//    private void openNumFragment() {
+//        if(getSupportFragmentManager().findFragmentByTag(NumFragment.TAG) == null) {
+//            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+//            transaction.replace(R.id.frame, numberFragment)
+//                    .addToBackStack(null)
+//                    .commit();
+//        }
+//    }
 }
